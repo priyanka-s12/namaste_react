@@ -6,6 +6,7 @@ import store from '../utils/store';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainContainer from './components/MainContainer';
 import WatchPage from './components/WatchPage';
+import SearchResults from './components/SearchResults';
 
 const appRouter = createBrowserRouter([
   {
@@ -17,15 +18,19 @@ const appRouter = createBrowserRouter([
         path: '/watch',
         element: <WatchPage />,
       },
+      {
+        path: '/results',
+        element: <SearchResults />,
+      },
     ],
   },
 ]);
 
-//partial routing
+//partial routing - head same to all but if Head has Link component no partial routing
 function App() {
   return (
     <Provider store={store}>
-      <Head />
+      {/* <Head /> */}
       {/* <Body /> */}
 
       <RouterProvider router={appRouter} />
