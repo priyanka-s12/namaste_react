@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { closeMenu } from '../../utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import CommentsContainer from './CommentsContainer';
+import LiveChat from './LiveChat';
 
 function WatchPage() {
   const [searchParams] = useSearchParams();
@@ -40,9 +41,10 @@ function WatchPage() {
   }, [videoId]);
 
   return (
-    <div className="flex flex-col mt-24">
-      <div className="px-7 m-5">
-        {/* <iframe
+    <div className="flex mt-24">
+      <div className="flex flex-col md:w-[1100px]">
+        <div className="px-3 m-5">
+          {/* <iframe
         width="1000"
         height="500"
         // src="https://www.youtube.com/embed/934fLelTLuM?si=D9X3x4xIImCrqd4J"
@@ -53,36 +55,40 @@ function WatchPage() {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe> */}
-        {/*  youtube embed video */}
-        <iframe
-          width="1000"
-          height="500"
-          src={`https://www.youtube.com/embed/${videoId}`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
+          {/*  youtube embed video */}
+          <iframe
+            width="1000"
+            height="500"
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
 
-        {videoData && (
-          <div className="mt-4">
-            <h1 className="text-2xl font-bold">{videoData.snippet.title}</h1>
-            <p className="text-gray-600 font-bold">
-              {videoData.statistics.viewCount} views •{' '}
-              {new Date(videoData.snippet.publishedAt).toLocaleDateString()}
-            </p>
-            {/* <p className="mt-2">{videoData.snippet.description}</p> */}
-            {/* <p>Tags: </p>
+          {videoData && (
+            <div className="mt-4">
+              <h1 className="text-2xl font-bold">{videoData.snippet.title}</h1>
+              <p className="text-gray-600 font-bold">
+                {videoData.statistics.viewCount} views •{' '}
+                {new Date(videoData.snippet.publishedAt).toLocaleDateString()}
+              </p>
+              {/* <p className="mt-2">{videoData.snippet.description}</p> */}
+              {/* <p>Tags: </p>
           <ul>
             {videoData.snippet.tags.map((tag, index) => (
               <li key={index}>#{tag}</li>
             ))}
           </ul> */}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
+        <CommentsContainer />
       </div>
-      <CommentsContainer />
+      <div className="w-full">
+        <LiveChat />
+      </div>
     </div>
   );
 }
