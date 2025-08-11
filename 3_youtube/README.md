@@ -57,3 +57,5 @@ Comments Feature
 2 level nesting in Youtube
 
 - 10 (n) level nesting - reddit - pyramid of doom - tree structure - recursion
+
+\*\*\* useMemo, useCallback, useRef
