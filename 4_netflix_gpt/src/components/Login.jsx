@@ -1,10 +1,21 @@
 import { useRef, useState } from 'react';
 import Header from './Header';
 import { validateData } from '../utils/validate';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
+import { auth } from '../utils/firebase';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
+import { USER_AVATAR } from '../utils/constants';
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const dispatch = useDispatch();
 
   const name = useRef(null);
   const email = useRef(null);
@@ -12,19 +23,82 @@ const Login = () => {
 
   const handleButtonClick = () => {
     //validate form data
-    console.log(email);
-    console.log(password);
-    console.log(name);
+    // console.log(email);
+    // console.log(password);
+    // console.log(name);
 
-    const message = isSignInForm
-      ? validateData(email.current.value, password.current.value)
-      : validateData(
-          email.current.value,
-          password.current.value,
-          name.current ? name.current.value : ''
-        );
+    // const message = isSignInForm
+    //   ? validateData(email.current.value, password.current.value, name.current && snull)
+    //   : validateData(
+    //       email.current.value,
+    //       password.current.value,
+    //       name.current ? name.current.value : ''
+    //     );
+
+    const message = validateData(email.current.value, password.current.value);
     // console.log(message);
     setErrorMessage(message);
+
+    if (message) return;
+
+    if (!isSignInForm) {
+      //sign up logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: USER_AVATAR,
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              console.log('Updated Auth currentuser: ' + auth.currentUser);
+
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              // navigate('/browse');
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
+          // navigate('/browse');
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + '-' + errorMessage);
+        });
+    } else {
+      //sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          // console.log(user);
+          // navigate('/browse');
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + '-' + errorMessage);
+        });
+    }
   };
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);

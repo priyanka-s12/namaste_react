@@ -8,6 +8,19 @@
 - Login & Sig up form
 - Form validation
 - useRef
+- firebase hosting - build, add "rewrites": [{ "source": "**", "destination": "/index.html" }] in firebase.json
+- implement firebase signIn, signup api
+- create redux store with userSlice
+- if user already login, and in browse page, don't go to login
+- if user not login, don't go to browse page
+- unsubscribe to the onAuthStateChange callback
+- add hardcoded string values to constant.js
+- register TMDB api, create an app & get access token
+- get data from TMDB api
+- custom hook for moviesList
+- create movieSlice
+- update store with movies data
+- main container & secondary container
 
 ## features
 
