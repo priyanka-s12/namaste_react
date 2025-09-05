@@ -8,7 +8,7 @@ function SecondaryContainer() {
    *  - MovieCard * n
    *
    * */
-  console.log(movies.popularMovies);
+  // console.log(movies.popularMovies);
 
   return (
     movies && (

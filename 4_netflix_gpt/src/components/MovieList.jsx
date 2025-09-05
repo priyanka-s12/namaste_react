@@ -1,9 +1,8 @@
-import React from 'react';
 import MovieCard from './MovieCard';
 
 function MovieList({ title, movies }) {
-  console.log(title);
-  console.log(movies);
+  // console.log(title);
+  // console.log(movies);
 
   return (
     <div className="py-2 px-10 ">

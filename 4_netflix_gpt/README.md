@@ -21,6 +21,10 @@
 - create movieSlice
 - update store with movies data
 - main container & secondary container
+- language dropdown
+- GPT Search feature
+- Multi language feature
+- Integrate GPT api
 
 ## features
 
