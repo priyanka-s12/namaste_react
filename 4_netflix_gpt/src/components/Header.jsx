@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { addUser, removeUser } from '../utils/userSlice';
 import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
-import { toggleGptSearchView } from '../utils/gptSlice';
+import { addGeminiMovieResults, toggleGptSearchView } from '../utils/gptSlice';
 import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
@@ -57,6 +57,12 @@ const Header = () => {
   const handleGptSearchClick = () => {
     //toggle gpt search
     dispatch(toggleGptSearchView());
+    dispatch(
+      addGeminiMovieResults({
+        movieNames: null,
+        movieResults: null,
+      })
+    );
   };
 
   const handleLanguageChange = (e) => {
