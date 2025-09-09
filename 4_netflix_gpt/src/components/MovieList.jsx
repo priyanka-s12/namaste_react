@@ -6,7 +6,7 @@ function MovieList({ title, movies }) {
 
   return (
     <div className="py-2 px-10 ">
-      <h1 className="mb-3 text-xl text-white">{title}</h1>
+      <h1 className="mb-3 text-md md:text-xl text-white">{title}</h1>
       <div className="flex overflow-x-scroll">
         <div className="flex gap-2 ">
           {movies?.map((movie) => (

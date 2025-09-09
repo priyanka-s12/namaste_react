@@ -24,7 +24,12 @@
 - language dropdown
 - GPT Search feature
 - Multi language feature
-- Integrate GPT api
+- Integrate Gemini api search call
+- fetched gemini movie suggestions from TMDB
+- reused MovieList component
+- memoization
+- added .env file to gitignore
+- Made site responsive
 
 ## features
 

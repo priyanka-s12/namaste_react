@@ -71,10 +71,10 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img src={LOGO} alt="logo" className="w-44" />
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between flex-col md:flex-row">
+      <img src={LOGO} alt="logo" className="w-44 mx-auto md:mx-0" />
       {user && (
-        <div className="flex items-center gap-2">
+        <div className="flex justify-between items-center gap-2">
           {showGptSearch && (
             <select
               className="bg-gray-600 text-white p-2 m-2"
@@ -96,12 +96,16 @@ const Header = () => {
           >
             {showGptSearch ? 'Home' : 'GPT Search'}
           </button>
-          <img src={user.photoURL} alt="user icon" className="w-10 h-10" />
+          <img
+            src={user.photoURL}
+            alt="user icon"
+            className="w-10 h-10 hidden md:block"
+          />
           <button
             className="font-bold text-white cursor-pointer"
             onClick={handleSignOut}
           >
-            Sign Out
+            (Sign Out)
           </button>
         </div>
       )}

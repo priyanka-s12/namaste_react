@@ -3,11 +3,11 @@ import React from 'react';
 function VideoTitle({ title, overview }) {
   return (
     <div className="pt-[20%] px-12 absolute text-white bg-gradient-to-r from-black w-screen aspect-video">
-      <h1 className="text-4xl font-bold">{title}</h1>
+      <h1 className="text-xl md:text-4xl font-bold">{title}</h1>
 
-      <p className="py-6 text-md w-1/4">{overview}</p>
-      <div className="flex gap-1.5">
-        <button className="bg-white text-black text-lg p-2 px-8 rounded-lg flex gap-2 items-center hover:opacity-80 cursor-pointer">
+      <p className="hidden md:inline-block py-6 text-md w-1/4">{overview}</p>
+      <div className="flex gap-1.5 mt-2">
+        <button className="bg-white text-black text-sm md:text-lg py-1 md:py-2 px-3 md:px-8 rounded-lg flex gap-2 items-center hover:opacity-80 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -24,7 +24,7 @@ function VideoTitle({ title, overview }) {
           </svg>{' '}
           <span>Play</span>
         </button>
-        <button className="bg-gray-700 text-white text-lg p-2 px-8 hover:opacity-80 cursor-pointer rounded-lg">
+        <button className="bg-gray-700 text-white text-lg p-2 px-8 hover:opacity-80 cursor-pointer rounded-lg hidden md:inline-block">
           More Info
         </button>
       </div>

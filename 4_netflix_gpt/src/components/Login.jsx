@@ -27,6 +27,8 @@ const Login = () => {
     // console.log(password);
     // console.log(name);
 
+    //email - bob@example.com, pass - BobThomson@123
+
     // const message = isSignInForm
     //   ? validateData(email.current.value, password.current.value, name.current && snull)
     //   : validateData(
@@ -118,10 +120,10 @@ const Login = () => {
       </div>
 
       <form
-        className="text-white absolute bg-black p-12 w-[500px] rounded-lg mx-auto my-36 right-0 left-0 opacity-80"
+        className="text-white absolute bg-black p-12 w-full md:w-3/12 rounded-lg mx-auto my-36 right-0 left-0 opacity-80"
         onSubmit={(e) => e.preventDefault()}
       >
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-lg md:text-3xl font-bold">
           {isSignInForm ? 'Sign In' : 'Sign Up'}
         </h1>
         {!isSignInForm && (

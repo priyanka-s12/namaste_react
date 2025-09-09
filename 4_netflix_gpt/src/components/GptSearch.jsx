@@ -19,8 +19,10 @@ function GptSearch() {
         {/* Black overlay */}
         <div className="absolute inset-0 bg-black opacity-60" />
       </div>
-      <GptSearchBar />
-      <GptMovieSuggestions />
+      <div className="">
+        <GptSearchBar />
+        <GptMovieSuggestions />
+      </div>
     </div>
   );
 }
